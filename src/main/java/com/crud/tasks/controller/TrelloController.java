@@ -17,30 +17,31 @@ public class TrelloController {
     private TrelloClient trelloClient;
 
     @RequestMapping(method = RequestMethod.GET, value = "getTrelloBoards")
-    public void getTrelloBoards() {
+    public List<TrelloBoardDto> getTrelloBoards() {
+        return trelloClient.getTrelloBoards();
 
-        List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
+        //List<TrelloBoardDto> trelloBoards = trelloClient.getTrelloBoards();
 
-        trelloBoards.forEach(trelloBoardDto -> System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
+        //trelloBoards.forEach(trelloBoardDto -> System.out.println(trelloBoardDto.getId() + " " + trelloBoardDto.getName()));
 
         //zad3
-        trelloBoards.stream().filter(trelloBoardDto -> trelloBoardDto.getId() != null)
-                .filter(trelloBoardDto -> trelloBoardDto.getName() != null)
-                .filter(trelloBoardDto -> trelloBoardDto.getName().contains("kodilla"))
-                .forEach(System.out::println);
+        //trelloBoards.stream().filter(trelloBoardDto -> trelloBoardDto.getId() != null)
+                //.filter(trelloBoardDto -> trelloBoardDto.getName() != null)
+                //.filter(trelloBoardDto -> trelloBoardDto.getName().contains("kodilla"))
+               // .forEach(System.out::println);
 
 
 
-        trelloBoards.forEach(trelloBoardDto -> {
+        //trelloBoards.forEach(trelloBoardDto -> {
 
-            System.out.println(trelloBoardDto.getName() + " - " + trelloBoardDto.getId());
+           // System.out.println(trelloBoardDto.getName() + " - " + trelloBoardDto.getId());
 
-            System.out.println("This board contains lists: ");
+          //  System.out.println("This board contains lists: ");
 
-            trelloBoardDto.getLists().forEach(trelloList ->
-                    System.out.println(trelloList.getName() + " - " + trelloList.getId() + " - " + trelloList.isClosed()));
+           // trelloBoardDto.getLists().forEach(trelloList ->
+                //    System.out.println(trelloList.getName() + " - " + trelloList.getId() + " - " + trelloList.isClosed()));
 
-        });
+      //  });
     }
     @RequestMapping(method = RequestMethod.POST, value = "createTrelloCard")
     public CreatedTrelloCard createdTrelloCard (@RequestBody TrelloCardDto trelloCardDto) {
