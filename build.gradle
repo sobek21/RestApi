@@ -27,7 +27,10 @@ dependencies {
     compile('io.springfox:springfox-swagger2:2.7.0')
     compile('io.springfox:springfox-swagger-ui:2.7.0')
 
- // providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '2.3.3.RELEASE'
+
+
+    // providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
     //compile('org.postgresql:postgresql')
     testCompile group: 'junit', name: 'junit-dep', version: '4.11', ext: 'pom'
     testCompile group: 'org.mockito', name: 'mockito-core', version: '3.5.10'
