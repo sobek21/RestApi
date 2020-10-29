@@ -17,7 +17,7 @@ public class SimpleEmailService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SimpleEmailService.class);
 
-    public void send (Mail mail){
+    public void send(Mail mail) {
 
         LOGGER.info("Starting email preparation...");
         try {
@@ -26,17 +26,18 @@ public class SimpleEmailService {
 
             LOGGER.info("Email has been sent.");
         } catch (MailException e) {
-            LOGGER.error("Failed to proces email sending: "+ e.getMessage(), e);
+            LOGGER.error("Failed to proces email sending: " + e.getMessage(), e);
         }
     }
-    private SimpleMailMessage createMailMessage(Mail mail){
-            SimpleMailMessage mailMessage = new SimpleMailMessage();
-            mailMessage.setTo(mail.getMailTo());
-            mailMessage.setSubject(mail.getSubject());
-            mailMessage.setText(mail.getMessage());
-            if(mail.getToCC() != null && mail.getToCC().equals("")) {
-                mailMessage.setCc(mail.getToCC());
-            }
+
+    private SimpleMailMessage createMailMessage(Mail mail) {
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(mail.getMailTo());
+        mailMessage.setSubject(mail.getSubject());
+        mailMessage.setText(mail.getMessage());
+        // if(mail.getToCC() != null && mail.getToCC().equals("")) {
+          //   mailMessage.setCc(mail.getToCC());
+       // }
             return mailMessage;
         }
 
